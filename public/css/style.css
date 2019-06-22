@@ -1,3 +1,163 @@
-/**
- * TODO(you): Add the CSS necessary to complete your final project.
- **/
+body {
+	margin: 0;
+	background-color:#fdf5f5;
+	font-family: 'Montserrat', sans-serif;
+}
+#menu {
+	padding:20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+#menu div{
+	padding:10px;
+	margin:15px;
+}
+.title{
+	font-family: 'Merriweather', serif;
+	font-size: 30px;
+}
+.text{
+	font-size:14px;
+}
+#menubutton{
+	margin:15px;
+	border: 2px solid black;
+	background-color: white;
+	padding:20px 50px;
+	font-size:12px;
+	transition: all 0.25s;
+	cursor:pointer;
+}
+#menubutton span{
+	cursor: pointer;
+  	display: inline-block;
+  	position: relative;
+  	transition: 0.25s;
+}
+#menubutton span:after{
+	content: '\00bb';
+  	position: absolute;
+  	opacity: 0;
+  	top: 0;
+  	right: -10px;
+  	transition: 0.5s;
+}
+#menubutton:hover span{
+	padding-right:10px;
+	background-color:black;
+	color:white;
+}
+#menubutton:hover span:after{
+	opacity:1;
+	right:0;
+}
+#menubutton:hover{
+	background-color: black;
+}
+#menubutton:focus{
+	outline:none;
+}
+.inactive{
+	display:none!important;
+}
+#diary{
+	width:100vw;
+	height:calc(100vh - 60px);	
+	margin-top: 60px;
+	display: flex;
+    flex-direction:column;
+}
+#main{
+	height:calc(100vh - 70px);
+	width:100vw;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#main div{
+	padding:10px;
+	margin:5px;
+}
+#control,#editmode{
+	background-color:white;
+	height:70px;
+	display: flex;
+    align-items: center;
+}
+#control{
+	justify-content: space-around;
+}
+#control div{
+	cursor:pointer;
+}
+#subdiary,textarea{
+	font-family: 'Merriweather', serif;
+	background-color: white;
+	width:60vw;
+	height:40vh;
+	line-height:1.5em;
+	background: rgba(255, 255, 255, 0.5);
+}
+#subdiary{
+	background-color:#fdf5f5;
+	cursor:pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: flex-start;
+}
+.inline{
+	border-bottom: solid 2px black;
+}
+#editmode{
+    justify-content: center;
+}
+#editmode img{
+	cursor: pointer;
+}
+#subdiary div{
+	cursor: default;
+	width:50vw;
+	box-shadow:6px 6px 6px rgba(20%,20%,40%,0.5),inset 1px 1px 4px 2px rgba(20%,20%,40%,0.5);
+	background-color: #DDDDDD;
+	border:2px solid black;
+	margin:5px;
+	display:flex;
+	flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    overflow:hidden;
+    opacity:1;
+}
+#subdiary div:hover{
+	transition: 1s;
+	opacity :0.8;
+	background-color: #666666;
+}
+#subdiary i{
+	font-size:20px;
+}
+.trashcan:hover{
+	color: red;
+	cursor:pointer;
+}
+#home:hover{
+	transition: 0.5s;
+	color:red;
+}
+#backward:hover,#forward:hover{
+	-webkit-filter: invert(100%);
+}
+@media (max-width: 500px) {
+    #subdiary i{
+    	font-size:12px;
+    }
+    #subdiary div{
+    	width:70vw;
+    }
+    .text{
+    	font-size:8px;
+    }
+}

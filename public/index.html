@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>CS193x Final Project</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="js/prompts.js" defer></script>
+    <script src="js/diary.js" defer></script>
+    <script src="js/menu.js" defer></script>
+    <script src="js/app.js" defer></script>
     <script src="js/script.js" defer></script>
-    </script>
   </head>
   <body>
-    <!-- TODO(you): Add the HTML necessary to complete your final project. -->
+    
+    <div id="menu">
+    <div class="title">Create a Daily Journal</div>
+    <div class="text">Note: Your journal will be viewable and editable to anyone who has the link!</div>
+    <button id="menubutton"><span>CREATE A NEW JOURNAL</span></button></div>
+
+    <div id="diary" class="inactive">
+    <div id="main">
+    <div id="date"><span class="title inline date">Date</span></div>
+    <div id="prompts" class="text">Prompts</div>
+    <div id="subdiary" class="text"></div>
+    <textarea id="textarea" class="inactive" placeholder="use newline to separate your daily."></textarea>
+    </div>
+    
+    <div id="control">
+    <div id="backward"><img src="img/back.png"></div>
+    <div id="home">HOME</div>
+    <div id="forward"><img src="img/forward.png"></div>  
+    </div>
+
+    <div id="editmode" class="inactive"><img src="img/checked.png"></div>
+    </div>
+
   </body>
 </html>
