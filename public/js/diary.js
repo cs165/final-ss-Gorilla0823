@@ -48,9 +48,7 @@ class Diary {
         document.querySelector("#textarea").classList.add('inactive');
         var text=document.querySelector("#textarea").value;
         text=text.toString();
-        //test
         text=text.replace(/\n/g,"\\n");
-        //text=new String(text.getBytes(),"UTF-8");
         const result = await fetch('/api/'+this.id,{ method : 'POST', 
             body:' { \"text\":\"'+text+'\" , \"delete\":\"false\"}',
             headers :{      'Accept': 'application/json',
@@ -151,13 +149,12 @@ class Diary {
     list(){
         console.log('list');
         const words=document.querySelector("#subdiary").innerText;
-
         document.querySelector("#subdiary").innerText="";
-        //document.querySelector("#textarea").value="";
-        
         const lists=words.split("\n");
+        var inner=[];
         for(let list of lists){
             if(list==="") continue;
+            inner.push(list);
             const diary=document.querySelector("#subdiary");
             let div=document.createElement('div');
             div.setAttribute("class","subdiv");
@@ -170,23 +167,27 @@ class Diary {
             let trashcan=document.createElement('i');
             trashcan.setAttribute("class","fas fa-trash-alt subimage trashcan");
             div.append(trashcan); 
-            //TODO overflow && textarea with '\n' &&textarea with previous word
         }
+        this.inner=inner;
         var empty = document.querySelectorAll('.trashcan');
         for(var i=0;i<empty.length;i++)
         empty[i].addEventListener('click',this.delete);
     }
     async delete(event){
-            console.log(event.currentTarget.parentNode.textContent);
-            console.log(this.id);
             event.stopPropagation();
             var word=event.currentTarget.parentNode.textContent;
-            //TODO: solve
+            var words="";
+            var exist=false;
             var check= confirm("Are you sure you want to delete selected item?");
             if(check === true){
-                console.log('hi');
+                for(var inner of this.inner){
+                    if(inner!==word||exist===true)
+                        words+=inner+"\\n";
+                    else
+                        exist=true;
+                }
                 const result = await fetch('/api/'+this.id,{ method : 'POST', 
-                    body:' { \"text\":\"'+word+'\" , \"delete\":\"true\"}',
+                    body:' { \"text\":\"'+words+'\" , \"delete\":\"true\"}',
                     headers :{      'Accept': 'application/json',
                               'Content-Type': 'application/json'}}); 
                 const json= await result.json();
@@ -208,18 +209,12 @@ class Diary {
     }
     sorttextarea(){
         var text=document.querySelector("#textarea").value;
-        //console.log(text);
         var result="";
-        // split \n 
-        //text=text.replace(/\s/g,'\u000a');
-        //text=('fuck \u000a you');
         var tokens=text.split(/\n/g);
         for(var token of tokens){
-            if(token!==""&&token!==" ")
+            if(/\S/.test(token))
                 result+=token+"\u000a";
         }
-        //console.log(result);
         document.querySelector("#textarea").value=result;
     }
-
 }

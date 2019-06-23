@@ -23,12 +23,12 @@ class menu {
                         'Content-Type': 'application/json'}}); 
         const json = await result.json();
         if(json.text!==undefined){
-        document.querySelector("#textarea").value=json.text;
-        document.querySelector("#subdiary").innerText=json.text;
+            document.querySelector("#textarea").value=json.text;
+            document.querySelector("#subdiary").innerText=json.text;
         }
         else{
-         document.querySelector("#textarea").value="";
-        document.querySelector("#subdiary").innerText="";
+            document.querySelector("#textarea").value="";
+            document.querySelector("#subdiary").innerText="";
         }
         document.querySelector(".date").innerText=date2;
         this.diary(ID,date2,json);

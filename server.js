@@ -54,10 +54,7 @@ async function onPost(req, res) {
   else{
 		for(var i=1;i<rows.length;i++){
 			if(id === rows[i][0]){
-				var original=rows[i][1];
-				//problem
-				original=original.replace(messageBody,"");
-				await sheet.setRow(i,[id,original]);
+				await sheet.setRow(i,[id,messageBody]);
 			}
 		}  		
   }

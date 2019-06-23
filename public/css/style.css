@@ -1,7 +1,8 @@
-body {
+html,body {
 	margin: 0;
 	background-color:#fdf5f5;
 	font-family: 'Montserrat', sans-serif;
+	max-height: 100vh;
 }
 #menu {
 	padding:20px;
