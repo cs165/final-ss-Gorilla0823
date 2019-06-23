@@ -8,11 +8,12 @@ class Diary {
         this.edit=this.edit.bind(this);
         this.list=this.list.bind(this);
         this.delete=this.delete.bind(this);
+        this.select=this.select.bind(this);
+        this.timestring=this.timestring.bind(this);
+        this.home=this.home.bind(this);
         this.id=id;
         this.date=date;
         this.text=text;
-        this.timestring=this.timestring.bind(this);
-        this.home=this.home.bind(this);
         this.prompts();
         const edit=document.querySelector('#subdiary');
         edit.addEventListener('click',this.edit);
@@ -25,6 +26,7 @@ class Diary {
         const forward=document.querySelector('#forward');
         forward.addEventListener('click',this.forward);
         this.list();
+        this.drop();
     }
     prompts(){
         console.log('Diary : prompts');
@@ -67,6 +69,7 @@ class Diary {
         }
         this.sorttextarea();
         this.list();
+        this.drop();
     }
     async home(){
         const today = new Date();
@@ -151,10 +154,12 @@ class Diary {
         const words=document.querySelector("#subdiary").innerText;
         document.querySelector("#subdiary").innerText="";
         const lists=words.split("\n");
-        var inner=[];
+        var inner=[],count=0;
         for(let list of lists){
             if(list==="") continue;
+            count++;
             inner.push(list);
+            if(count>10) continue;
             const diary=document.querySelector("#subdiary");
             let div=document.createElement('div');
             div.setAttribute("class","subdiv");
@@ -204,8 +209,10 @@ class Diary {
                 }
             }
             else return;
+
             this.sorttextarea();
             this.list();
+            this.drop();
     }
     sorttextarea(){
         var text=document.querySelector("#textarea").value;
@@ -216,5 +223,38 @@ class Diary {
                 result+=token+"\u000a";
         }
         document.querySelector("#textarea").value=result;
+    }
+    async drop(){
+        const result = await fetch('/createlist',{ method : 'GET' });
+        const json = await result.json();
+        var tokens=json.split("\\n");
+        tokens.sort();
+        var flag=false;
+        const dropdown=document.querySelector(".dropdown");
+        dropdown.innerText="";
+        for(var token of tokens){
+            if(token==="")continue;
+            let li=document.createElement('li');
+            li.setAttribute("class","menu-item sub-menu");
+            let word=document.createElement('a');
+            word.setAttribute("href","#");
+            word.innerText=token;
+            li.append(word);
+            dropdown.append(li);         
+        }
+        var choose = document.querySelectorAll('.menu-item');
+        for(var i=0;i<choose.length;i++)
+            choose[i].addEventListener('click',this.select);
+    }
+    select(){
+        //li click disapeear
+        event.stopPropagation();
+        var word=event.currentTarget.textContent;
+        this.id=word;
+        this.timestring();
+        this.date= new Date(this.date);
+        const options = { month: 'long', day: 'numeric' };
+        document.querySelector(".date").innerText=this.date.toLocaleDateString('en-US', options);
+        this.timestring2();
     }
 }

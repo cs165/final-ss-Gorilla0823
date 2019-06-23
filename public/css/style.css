@@ -162,3 +162,78 @@ body {
     	font-size:8px;
     }
 }
+.site-navigation {
+	display: block;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+.site-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+.site-navigation li {
+	display: block;
+	float: left;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+#navtitle{
+	padding :10px;
+	border-bottom:2px solid black;
+}
+#navtitle:hover{
+	background-color: #DDDDDD;
+	box-shadow: 0px 15px 20px rgba(220,220,220,0.5);
+	transform: translateY(-5px);
+}
+.dropdown li{
+	background-color:white;
+	margin:0;
+}
+.site-navigation li a {
+  	color: black;
+  	text-decoration: none;
+  	display: block;
+}
+.site-navigation li:hover {
+	cursor: pointer;
+}
+.site-navigation ul li ul {
+	visibility: hidden;
+	position: absolute;
+  	transition: visibility 0.1s ease-in;
+  	margin-top:0;
+	left: 0;
+	z-index: 999;
+}
+.site-navigation ul li:hover > ul,
+.site-navigation ul li ul:hover {
+   visibility: visible;
+}
+
+.site-navigation ul li ul li {
+	clear: both;
+	padding: 5px 0 5px 18px;
+  	width: 100%;
+}
+
+.site-navigation ul li ul li:hover {
+	background-color: #DDDDDD;
+}
+#nav{
+	width:50vw;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content:space-around;
+}
+#diary {
+  @supports (-webkit-appearance:none) {
+    .os-android & {
+      min-height: calc(100vh - 56px);
+    }
+  }
+}
