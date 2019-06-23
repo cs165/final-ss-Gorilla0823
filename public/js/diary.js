@@ -247,7 +247,6 @@ class Diary {
             choose[i].addEventListener('click',this.select);
     }
     select(){
-        //li click disapeear
         event.stopPropagation();
         var word=event.currentTarget.textContent;
         this.id=word;

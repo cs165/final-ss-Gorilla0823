@@ -11,7 +11,7 @@ body {
 	align-items: center;
 	justify-content: center;
 }
-#menu div{
+#menu .title,.text{
 	padding:10px;
 	margin:15px;
 }
@@ -161,6 +161,14 @@ body {
     .text{
     	font-size:8px;
     }
+    #navtitle{
+    	font-size:10px;
+    	padding:5px;
+    }
+    .date{
+    	display:inline-block;
+    	font-size:15px;
+    }
 }
 .site-navigation {
 	display: block;
@@ -224,16 +232,12 @@ body {
 	background-color: #DDDDDD;
 }
 #nav{
-	width:50vw;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content:space-around;
 }
-#diary {
-  @supports (-webkit-appearance:none) {
-    .os-android & {
-      min-height: calc(100vh - 56px);
-    }
-  }
+
+.g-signin2 > div{
+  margin: 0 auto;
 }

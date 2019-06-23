@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="google-signin-client_id" content="777966763801-73kgkmb6qenk0qg9ucnob4jchmd1h023.apps.googleusercontent.com">
     <title>CS193x Final Project</title>
     <link rel="stylesheet" href="css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="js/prompts.js" defer></script>
     <script src="js/diary.js" defer></script>
     <script src="js/menu.js" defer></script>
@@ -19,7 +21,10 @@
     <div id="menu">
     <div class="title">Create a Daily Journal</div>
     <div class="text">Note: Your journal will be viewable and editable to anyone who has the link!</div>
-    <button id="menubutton"><span>CREATE A NEW JOURNAL</span></button></div>
+    <button id="menubutton"><span>CREATE A NEW JOURNAL</span></button>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
+
 
     <div id="diary" class="inactive">
     <div id="main">
