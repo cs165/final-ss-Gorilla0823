@@ -35,9 +35,7 @@ async function Createlist(req, res) {
   const result = await sheet.getRows();
   const rows = result.rows;	
   var store="";
-  //error with \n and space bar
   for(var i=1;i<rows.length;i++){
-  	console.log(rows[i][1]);
   		if( (rows[i][1])!== undefined)
   			store=store+rows[i][0]+"\\n";
   }
